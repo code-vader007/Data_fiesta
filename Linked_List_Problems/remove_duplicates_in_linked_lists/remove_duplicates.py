@@ -18,7 +18,7 @@ class LinkedList:
         self.first.setNext(self.first)
         self.last = self.first
         for e in contents:
-            self.sort_list_append(e)
+            self.append(e)
 
     def printList(self):
         tmp = self.first.next
@@ -34,26 +34,26 @@ class LinkedList:
         lastNode.setNext(newNode)
         self.last = newNode
         self.numItems += 1
-
-    def sort_list_append(self,item):
-        newNode = LinkedList.__Node(item,self.first)
-        tmp1=self.first
+    
+    def remove_duplicates(self):
+        tmp1=self.first.next
         tmp2=tmp1.next
-        while(tmp2.item!=None):
-            if(self.numItems==0):
-                self.append(item)
-                return
-            if(tmp2.item>item):
-                tmp1.setNext(newNode)
-                newNode.setNext(tmp2)
-                self.numItems+=1
-                return 
+        while(tmp1.item!=None):
+            if(tmp1.item==tmp2.item):
+                count=0
+                while(tmp2.next.item==tmp1.item):
+                    count+=1
+                    tmp2=tmp2.next
+                tmp1.next=tmp2.next
+                tmp1=tmp1.next
+                tmp2=tmp1.next
+                self.numItems-=count+1
             else:
                 tmp1=tmp1.next
                 tmp2=tmp2.next
-        if(tmp2.item==None):
-            self.append(item)
 
 
-list=LinkedList([5,4,10,6,11])
+list=LinkedList([1,1,1,2,2,2,2,3,3,4,5,5,5,5,5,5,5,5])
+list.printList()
+list.remove_duplicates()
 list.printList()
