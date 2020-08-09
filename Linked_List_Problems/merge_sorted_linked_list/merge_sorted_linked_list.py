@@ -54,7 +54,7 @@ def buildHeap(arr, n):
 
     return arr
 
-def sorted(list1,list2):
+def merge_sorted(list1,list2):
     l1=LinkedList(list1)
     l2=LinkedList(list2)
     list3=[]
@@ -79,5 +79,5 @@ def sorted(list1,list2):
 
 list1=[7,8,9,10]
 list2=[1,2,2,3]
-list3=sorted(list1,list2)
+list3=merge_sorted(list1,list2)
 list3.printList()
